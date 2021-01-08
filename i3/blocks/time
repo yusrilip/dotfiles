@@ -3,6 +3,6 @@
 FORMAT="${BLOCK_INSTANCE:- %H:%M%p}"
 DATETIME=$(date "+${FORMAT}")
 
-echo "${DATETIME}"
-echo "${DATETIME}"
+echo "${DATETIME}  "
+echo "${DATETIME}  "
 echo ""

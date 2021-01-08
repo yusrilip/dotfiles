@@ -37,7 +37,7 @@ SCONTROL="${BLOCK_INSTANCE:-$(amixer -D $MIXER scontrols |
 
 # The first parameter sets the step to change the volume by (and units to display)
 # This may be in in % or dB (eg. 5% or 3dB)
-STEP="${1:-5%}"
+STEP="${1:-2%}"
 
 #------------------------------------------------------------------------
 
@@ -52,9 +52,9 @@ volume() {
 
 format() {
   perl_filter='if (/.*\[(\d+%)\] (\[(-?\d+.\d+dB)\] )?\[(on|off)\]/)'
-  perl_filter+='{CORE::say $4 eq "off" ? "  MUTE " : "'
+  perl_filter+='{CORE::say $4 eq "off" ? "MUTE" : "'
   # If dB was selected, print that instead
-  perl_filter+=$([[ $STEP = *dB ]] && echo '  $3 ' || echo '  $1 ')
+  perl_filter+=$([[ $STEP = *dB ]] && echo '$3  ' || echo '$1  ')
   perl_filter+='"; exit}'
   perl -ne "$perl_filter"
 }

@@ -16,8 +16,8 @@ elif [[ "${BATTERY_STATE}" = "Discharging" ]]; then
   echo "${BATTERY_POWER}%-"
   echo ""
 else
-  echo "${BATTERY_POWER}% "
-  echo "${BATTERY_POWER}% "
+  echo "${BATTERY_POWER}%  "
+  echo "${BATTERY_POWER}%  "
   echo ""
 fi
 

@@ -57,8 +57,8 @@ if [[ "${OUT_TEXT}" ]]; then
   TEXT_LINE="${OUT_TEXT}${ADD_STR}${OUT_TEXT}${ADD_STR}${OUT_TEXT}"
   TEXT_LINE=${TEXT_LINE:$SCROLL_POS:$MAX_LENGTH}
 
-  echo "<span font_family='monospace'>${TEXT_LINE}</span>"
-  echo "<span font_family='monospace'>${TEXT_LINE}</span>"
+  echo "${TEXT_LINE}"
+  echo "${TEXT_LINE}"
 
   SCROLL_POS=$((SCROLL_POS +1))
 

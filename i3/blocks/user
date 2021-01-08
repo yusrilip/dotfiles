@@ -1,7 +1,7 @@
 #!/usr/bin/bash
 
-echo " ${USER}"
-echo "${USER}"
+echo "<span font_family='JetBrains Mono ExtraBold' foreground='#282828'> ${USER} </span>"
+echo "<span font_family='JetBrains Mono ExtraBold' foreground='#282828'> ${USER} </span>"
 echo ""
 
 if [[ $(id -u) -eq 0 ]]; then
