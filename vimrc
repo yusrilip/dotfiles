@@ -1,7 +1,6 @@
 " -- VIM PLUG Setup and LOAD --
 call plug#begin('~/.vim/plugged')
 Plug 'itchyny/lightline.vim'
-Plug 'joshdick/onedark.vim'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/goyo.vim'
@@ -9,6 +8,8 @@ Plug 'mbbill/undotree'
 Plug 'preservim/nerdtree'
 Plug 'godlygeek/tabular'
 Plug 'plasticboy/vim-markdown'
+Plug 'sheerun/vim-polyglot'
+Plug 'joshdick/onedark.vim'
 call plug#end()
 
 " Startup Settings
@@ -29,7 +30,7 @@ call plug#end()
 	set nocompatible
 	set number relativenumber
 	colorscheme onedark
-"  set background=dark
+"  set background=default
 "  set termguicolors
 	filetype plugin on
 	set encoding=utf-8
@@ -48,7 +49,7 @@ call plug#end()
 	nnoremap <F5> :UndotreeToggle<CR> :UndotreeFocus<CR>
     nnoremap <Leader>i :w !ix<CR>
 " Persistent_undo
-	set undodir=~/.vim/undodir"
+  highlight Normal ctermbg=Black 
 	set undofile
 	let g:undotree_WindowLayout = 2
 " Tabedit keybinds
@@ -63,3 +64,30 @@ call plug#end()
     let g:vim_markdown_conceal = 0
     let g:vim_markdown_override_foldtext = 0
     let g:vim_markdown_folding_disabled = 1
+
+" restore cursor position when opening file
+autocmd BufReadPost *
+    \ if line("'\"") > 1 && line("'\"") <= line("$") |
+    \   execute "normal! g`\"" |
+    \ endif
+
+let g:lightline = {
+        \ 'colorscheme': 'seoul256',
+      \ 'active': {
+        \   'left': [ [ 'mode', 'paste' ],
+      \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
+      \ },
+      \ 'component_function': {
+        \   'gitbranch': 'FugitiveHead'
+      \ },
+      \ }
+
+"let g:lightline = {
+"    \ 'colorscheme': 'onedark',
+"  \ }
+
+"let g:onedark_termcolors=256
+
+"if &_Co > 2 || has("gui_running")
+"	set hlsearch
+"ndif

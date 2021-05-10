@@ -91,7 +91,7 @@ source $ZSH/oh-my-zsh.sh
  if [[ -n $SSH_CONNECTION ]]; then
    export EDITOR='vim'
  else
-   export EDITOR='mvim'
+   export EDITOR='URxvt'
  fi
 
 # Compilation flags
@@ -108,8 +108,35 @@ source $ZSH/oh-my-zsh.sh
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-alias neo='neofetch --source ~/Pictures/dino.txt'
-alias pmem='sudo ./mem.py'
+alias neo='neofetch --w3m --source ~/Pictures/shots/planet.png --size 180px --colors 3 7 3 3 7 7 --loop'
+alias pmem='sudo ./.mem.py'
 alias editi3='vim /home/yusril/.i3/config'
-alias v='vim'
+alias editblocks='vim /home/yusril/.i3/i3blocks.conf'
 alias clr='clear'
+
+case $TERM in
+       st*)
+       precmd () {
+       # menampilkan direktori aktif (kondisi default)
+               print -Pn "\e]0;st:%~\a"
+           }
+           preexec () {
+       # menampilkan program yang sedang berjalan
+               print -Pn "\e]0;st:$1\a"
+           }
+     ;;
+esac
+
+git-svn(){
+  if [[ ! -z "$1" && ! -z "$2" ]]; then
+   echo "Starting clone/copy ..."
+   repo=$(echo $1 | sed 's/\/$\|.git$//')
+   svn export "$repo/trunk/$2"
+   else
+   echo "Use: git-svn <repository> <subdirectory>"
+  fi
+          }
+
+# Edit .zshrc and add this line
+export PATH=$HOME/.config/rofi/bin:$PATH
+export TERM=st-256color

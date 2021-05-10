@@ -6,7 +6,7 @@ Xft.autohint:  false
 Xft.hintstyle: hintslight
 Xft.lcdfilter: lcddefault
 
-XTerm*foreground:        #282828
+XTerm*foreground:        #22221F
 XTerm*background:        #A6A28C
 XTerm*pointerColor:      #1ABB9B
 XTerm*faceName:          Fixed
@@ -15,7 +15,7 @@ XTerm*reverseVideo:      on
 XTerm*selectToClipboard: true
 XTerm.font:	xft:JetBrains Mono:style=Regular:size=12
 
-*background:                      #282828
+*background:                      #191919
 *foreground:                      #A6A28C
 *fading:                          8
 *fadeColor:                       black
@@ -24,7 +24,7 @@ XTerm.font:	xft:JetBrains Mono:style=Regular:size=12
 *pointerColorForeground:          #16A085
 
 !! black dark/light
-*color0:                          #22221F
+*color0:                          #191919
 *color8:                          #7D7A68
 
 !! red dark/light
@@ -55,11 +55,11 @@ XTerm.font:	xft:JetBrains Mono:style=Regular:size=12
 *color7:                          #A6A28C
 *color15:                         #FEFBEC
 
-Xcursor.theme: xcursor-breeze
+Xcursor.theme: Adwaita
 Xcursor.size: 0
 
 !URxvt.font:                       9x15,xft:JoyPixels 11
-URxvt.font:	xft:JetBrains Mono:style=Regular:size=12
+URxvt.font:	xft:Iosevka Mayukai :style=MediuM:size=11
 !font xft:JoyPixels 11
 ! alternative font settings with 'terminus':
 ! URxvt.font:      -xos4-terminus-medium-r-normal--16-160-72-72-c-80-iso10646-1
@@ -67,9 +67,9 @@ URxvt.font:	xft:JetBrains Mono:style=Regular:size=12
 !! terminus names see end of file!
 
 URxvt.depth:                      32
-URxvt.background:                 [100]#282828
+URxvt.background:                 [100]#191919
 URxvt*scrollBar:                  false
-URxvt*mouseWheelScrollPage:       false
+URxvt*mouseWheelScrollPage:       true
 URxvt*cursorBlink:                true
 URxvt*background:                 black
 URxvt*foreground:                 [100]#A6A28C
@@ -242,10 +242,10 @@ URxvt.keysym.Shift-Control-Down:  \033[1;6B
 ! ------------------------------------------------------------------------------
 
 rofi.color-enabled: true
-rofi.color-window: #282828, #282828, #282828
-rofi.color-normal: #282828, #d8dee9, #282828, #282828, #bf616a
-rofi.color-active: #282828, #b48ead, #282828, #282828, #93e5cc
-rofi.color-urgent: #282828, #ebcb8b, #282828, #282828, #ebcb8b
+rofi.color-window: #22221F, #22221F, #22221F
+rofi.color-normal: #22221F, #d8dee9, #22221F, #22221F, #bf616a
+rofi.color-active: #22221F, #b48ead, #22221F, #22221F, #93e5cc
+rofi.color-urgent: #22221F, #ebcb8b, #22221F, #22221F, #ebcb8b
 rofi.modi: run,drun,window
 
 !URxvt.letterSpace: 0
@@ -281,3 +281,4 @@ URxvt.keysym.M-C-v: perl:clipboard:paste_escaped
 !  misc
 URxvt.saveLines: 9999
 URxvt.iso14755: false
+
