@@ -1,8 +1,12 @@
 #!/bin/bash
 
-FORMAT="${BLOCK_INSTANCE:- %H:%M%p}"
-DATETIME=$(date "+${FORMAT}")
+FORMAT="${BLOCK_INSTANCE:- %I:%M}"
+TIME=$(date "+${FORMAT}")
 
-echo "${DATETIME}  "
-echo "${DATETIME}  "
+echo "<span foreground='#ffffff'>${TIME} </span><span weight='ultralight' foreground='#dabb22'>|</span>"
+echo "${TIME}"
 echo ""
+
+if [[ $BLOCK_BUTTON = 3 ]]; then
+  i3-msg exec "st tty-clock -cs -C 3"
+fi

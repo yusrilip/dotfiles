@@ -19,7 +19,7 @@ unset CPU[0]                          # Discard the "cpu" prefix.
 IDLE=${CPU[4]}                        # Get the idle CPU time.
 
 # Calculate the total CPU time.
-TOTAL=0
+TOTAL=00
 
 for VALUE in "${CPU[@]:0:4}"; do
   let "TOTAL=$TOTAL+$VALUE"
@@ -30,7 +30,7 @@ if [[ "${PREV_TOTAL}" != "" ]] && [[ "${PREV_IDLE}" != "" ]]; then
   let "DIFF_IDLE=$IDLE-$PREV_IDLE"
   let "DIFF_TOTAL=$TOTAL-$PREV_TOTAL"
   let "DIFF_USAGE=(1000*($DIFF_TOTAL-$DIFF_IDLE)/$DIFF_TOTAL+5)/10"
-  echo "${DIFF_USAGE}%"
+  echo "<span foreground='#ffffff'>${DIFF_USAGE}%</span>"
   echo "${DIFF_USAGE}%"
   echo ""
 else
@@ -45,4 +45,8 @@ echo "${IDLE}" >> "${cpuFile}"
 
 if [[ "${DIFF_USAGE}" -gt 0 ]] && [[ "${DIFF_USAGE}" -gt "  ${URGENT_VALUE}" ]]; then
   exit 33
+fi
+
+if [[ $BLOCK_BUTTON = 3 ]]; then
+  i3-msg exec "st gotop"
 fi

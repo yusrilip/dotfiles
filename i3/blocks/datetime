@@ -1,8 +1,13 @@
 #!/bin/bash
 
-FORMAT="${BLOCK_INSTANCE:- %A, %b %d %Y}"
-DATETIME=$(date "+${FORMAT}")
+#FORMAT="${BLOCK_INSTANCE:- %A, %b %d %Y}"
+FORMAT="${BLOCK_INSTANCE:- %A-%b-%d}"
+DATE=$(date "+${FORMAT}")
 
-echo "${DATETIME}  "
-echo "${DATETIME}  "
+echo "<span foreground='#ffffff'>${DATE}</span>"
+echo "${DATE}"
 echo ""
+
+#if [[ $BLOCK_BUTTON = 3 ]]; then
+#  i3-msg exec st
+#fi

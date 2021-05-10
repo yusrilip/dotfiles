@@ -1,18 +1,25 @@
 #!/bin/bash
 
 SSID_NAME=$(iwgetid -r)
-
+DISCONNECT=':down'
+STATUS=$(cat /sys/class/net/wlp2s0/operstate)
 # You can put any urgent name so the block will give warning
 # if a network with this name is used, like public wifi or alike.
 # You can separate multiple values with \|
 URGENT_VALUE=""
 
 if [[ "${SSID_NAME}" != "" ]]; then
-  echo "${SSID_NAME}"
-  echo "${SSID_NAME}"
+  echo "<span font_family='JetBrainsMono Nerd Font' foreground='#dabb22'>  直</span><span foreground='#ffffff'>  ${SSID_NAME}</span>"
   echo ""
-
-  if [[ "${URGENT_VALUE}" != "" ]] && [[ $(echo "${SSID_NAME}" | grep -we "${URGENT_VALUE}") != "" ]]; then
-    exit 33
-  fi
+  echo ""
+elif [[ "${SSID_NAME}" = "" ]]; then
+  echo "<span foreground='#dabb22'>  睊</span> <span strikethrough='false' foreground='#ffffff'>${STATUS}</span>"
+  echo "${STATUS}"
+  echo ""
 fi
+#  if [[ "${URGENT_VALUE}" != "" ]] && [[ $(echo "${SSID_NAME}" | grep -we "${URGENT_VALUE}") != "" ]]; then
+ #   exit 33
+if [[ $BLOCK_BUTTON = 1 ]]; then
+  i3-msg exec networkmanager_dmenu
+fi
+
