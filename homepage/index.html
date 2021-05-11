@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="style.css">
+        <meta charset="UTF-8">
+    </head>
+    <body>
+        <div class="site">
+                    <div align="center" class="search" style="color:#ebdbb2;">
+                        <!--<label for="searchbox">Cari :</label>-->
+                        <input type="text" id="searchbar" placeholder="   Search with DuckDuckGo..."">
+                        <script src="search.js"></script>
+                    </div>
+            <div class="container" align="center" style="font-family:Iosevka;">
+                <div id="box1">
+                    <a href="https://alqanime.com"c><span style="color:#191919">-</span>Alqanime</a>
+                    <br>
+                    <a href="https://www.animesail.com/"><span style="color:#191919">-</span>Animesail</a>
+                    <br>
+                    <a href="https://www.samehadaku.vip"><span style="color:#191919">-</span>Samehadaku</a>
+                    <br>
+                    <a href="https://www.github.com"><span style="color:#191919">-</span>Github</a>
+                    <br>
+                    <a href="https://www.youtube.com"><span style="color:#191919">-</span>Youtube</a>
+                    <br>
+                    <a href="https://www.reddit.com"><span style="color:#191919">-</span>Reddit</a>
+                    <br>
+                    <a href="https://www.w3schools.com"><span style="color:#191919">-</span>W3Schools</a>
+                    <br>
+                    <a href="https://kopiflick.xyz"><span style="color:#191919">-</span>KopiFlick</a>
+                    <br>
+                    <a href="qute://settings"><span style="color:#191919">-</span>Settings</a>
+                </div>
+            <div align="center" id="box2" style="font-family:TerminessTTF Nerd Font Mono;">
+                    
+                <script src="main.js"></script>
+                <p style="font-size:20%;font-family:Iosevka"><span id="month"></span> <span id="date"></span> <span id="year"></span></p>
+            </div>
+            </div>
+        </div>
+           <script>
+           var d = new Date();
+           var months = ["January","February","March","April","May","June","July","August","September","October","November","December"];11
+                                  document.getElementById("month").innerHTML = months[d.getMonth()];
+           </script>
+              <script>
+              var d = new Date();
+              document.getElementById("date").innerHTML = d.getDate();
+              </script>
+                 <script>
+                 var d = new Date();
+                 document.getElementById("year").innerHTML = d.getFullYear();
+                 </script>
+    </body>
+</html>

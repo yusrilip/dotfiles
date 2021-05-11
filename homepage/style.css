@@ -1,0 +1,96 @@
+#box1 {
+    border-style: solid;
+    border-color: #dabb22;
+    color: #ebdbb2;
+    margin: 10px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    border-radius: 0px;
+/*    box-shadow: 5px 5px 5px 5px #eb3f7f10;*/
+    width:  35%;
+    max-width: 1000px;
+    font-size: 25px;
+    transition: transform .2s;
+    text-align: left;
+}
+
+#box2 {/* clock*/
+    background-color: #dabb22;
+    color: #191919;
+    margin: 10px;
+    padding-top: 72px;
+    padding-bottom: 72px;
+    border-radius: 0px;
+/*#    box-shadow: 5px 5px 5px 5px #eb3f7f10;*/
+    width:  35%;
+    max-width: 1000px;
+    font-size: 95px;
+    transition: transform .2s;
+}
+
+body {
+    background-color: #191919;
+    margin: 0;
+    align-items:  center;
+    vertical-align: middle;
+    font-weight: bold;
+    color: #191919;
+}
+
+.container {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    justify-content: center;
+}
+
+a {
+    text-decoration: none;
+    color:  inherit;
+    text-align: center;
+    margin: 0 auto;
+}
+
+#box1:hover {
+    transform: scale(1.07);
+}
+
+#box2:hover {
+    transform: scale(1.07);
+}
+
+#searchbar:hover {
+    width: 100%;
+    max-width: 960px;
+}
+
+#searchbar:focus {
+    width: 100%;
+    max-width: 960px;
+}
+
+#searchbar {
+    width: 35%;
+    height: 35px;
+    max-width: 965px;
+    border: 3px solid #dabb22;
+    background-color: #191919;
+    color: #ebdbb2;
+    font-family: Iosevka;
+    font-size: 15px;
+    margin: 0px;
+    border-radius: 0px;
+/*#    box-shadow: 5px 5px 5px 5px #A2913E;*/
+    transition: width 0.7s;
+    transition-delay: 0.3s;
+}
+
+.site {
+    position: absolute;
+    margin: 0;
+    width: 100%;
+    top:50%;
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+    font-family: 'Iosevka', Nasa, Geneva, Verdana, sans-serif;
+}
