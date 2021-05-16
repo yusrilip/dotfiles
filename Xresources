@@ -15,7 +15,7 @@ XTerm*reverseVideo:      on
 XTerm*selectToClipboard: true
 XTerm.font:	xft:JetBrains Mono:style=Regular:size=12
 
-*background:                      #191919
+*background:                      #121212
 *foreground:                      #A6A28C
 *fading:                          8
 *fadeColor:                       black
@@ -24,7 +24,7 @@ XTerm.font:	xft:JetBrains Mono:style=Regular:size=12
 *pointerColorForeground:          #16A085
 
 !! black dark/light
-*color0:                          #191919
+*color0:                          #121212
 *color8:                          #7D7A68
 
 !! red dark/light
@@ -37,7 +37,7 @@ XTerm.font:	xft:JetBrains Mono:style=Regular:size=12
 
 !! yellow dark/light
 *color3:                          #CFB017
-*color11:                         #CFB017
+*color11:                         #dabb22
 
 !! blue dark/light
 *color4:                          #6684E1
