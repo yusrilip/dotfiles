@@ -8,7 +8,7 @@ set $mod Mod4
 # is used in the bar {} block below.
 #font xft:URWGothic-Book 11
 #font xft:JetBrains Mono 11
-font pango:JetBrains Mono 9
+font pango:Iosevka 9
 
 # set default desktop layout (default is tiling)
 workspace_layout tabbed
@@ -17,8 +17,8 @@ workspace_layout tabbed
 #default_border normal 0
 #default_floating_border normal
 
-# Hide borders
-  hide_edge_borders smart
+
+# title align
   title_align left
 
 #####################################################
@@ -102,9 +102,11 @@ bindsym $mod+Ctrl+m exec pavucontrol
 
 ################################################################################################
 
+################################################################################################
+
 # Screen brightness controls
-# bindsym XF86MonBrightnessUp exec "xbacklight -inc 10; notify-send 'brightness up'"
-# bindsym XF86MonBrightnessDown exec "xbacklight -dec 10; notify-send 'brightness down'"
+ bindsym XF86MonBrightnessUp exec xbacklight -inc 10
+ bindsym XF86MonBrightnessDown exec xbacklight -dec 10
 
 ##########################################
 #
@@ -116,9 +118,7 @@ bindsym $mod+F2 exec chromium
 bindsym Mod1+F2 exec qutebrowser
 bindsym $mod+F3 exec pcmanfm
 bindsym Mod1+F3 exec st -f 'Iosevka Nerd Font:size=12' ranger
-bindsym $mod+Shift+F3 exec pcmanfm_pkexec; exec notify-send 'running pcmanfm as root'
 bindsym $mod+F5 exec telegram-desktop
-#bindsym Mod1+F5 exec st -e 'vim'
 bindsym Mod1+F5 exec terminal -e 'mocp'
 #bindsym $mod+t exec --no-startup-id pkill picom ; exec notify-send 'kill picom'
 #bindsym $mod+Ctrl+t exec --no-startup-id picom
@@ -140,12 +140,14 @@ bindsym $mod+Ctrl+x --release exec --no-startup-id xkill; exec notify-send 'xkil
 #    Flameshot
 #
 ##########################################
-bindsym --release Shift+Print exec flameshot gui
+bindsym --release Print exec dmenu_screenshot
 #bindsym --release Print exec flameshot full -p /home/yusril/Pictures/screenshots/ -d 1500
-bindsym --release Print exec scrot '%Y-%m-%d-%H.%M.%S.png' -e 'mv $f ~/Pictures/shots/'; exec notify-send 'screenshot with scrot'
+bindsym --release Shift+Print exec scrot '%Y-%m-%d-%H.%M.%S.png' -e 'mv $f ~/Pictures/shots/'; exec notify-send 'screenshot with scrot'
 #bindsym --release Ctrl+Print exec flameshot screen -p /home/yusril/Pictures/screenshots/
 
-# focus_follows_mouse no
+################################################################################################
+
+focus_follows_mouse no
 
 # change focus
 #bindsym $mod+j focus left
@@ -153,8 +155,12 @@ bindsym --release Print exec scrot '%Y-%m-%d-%H.%M.%S.png' -e 'mv $f ~/Pictures/
 #bindsym $mod+l focus up
 #bindsym $mod+semicolon focus right
 
+################################################################################################
+
 # Enable Dunst Notifications
 exec --no-startup-id dunst -config ~/.config/dunst/dunstrc
+
+################################################################################################
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Left focus left
@@ -215,14 +221,18 @@ bindsym Mod1+slash scratchpad show
 bindsym $mod+Ctrl+Right workspace next
 bindsym $mod+Ctrl+Left workspace prev
 
+################################################################################################
+################################################################################################
+
+
 # Workspace names
 # to display names or symbols instead of plain workspace numbers you can use
 # something like: set $ws1 1:mail
 #                 set $ws2 2:
-set $ws1 1:一
-set $ws2 2:二
-set $ws3 3:三
-set $ws4 4:四
+set $ws1 1
+set $ws2 2
+set $ws3 3
+set $ws4 4
 #set $ws5 5
 #set $ws6 6
 #set $ws7 7
@@ -260,7 +270,11 @@ bindsym $mod+Shift+4 move container to workspace $ws4; workspace $ws4
 # assign [class="Pcmanfm"] $ws3
 # assign [class="Skype"] $ws5
 
-# Open specific applications in floating mode
+################################################################################################
+################################################################################################
+
+
+# Border per aplikas
 for_window [title="alsamixer"] floating enable border pixel 1
 for_window [class="calamares"] floating enable border normal 0
 for_window [class="Clipgrab"] floating enable
@@ -294,9 +308,18 @@ for_window [class="kazam"] floating enable
 for_window [class="scrcpy"] floating enable border normal 0
 for_window [class="Gcolor"] floating enable border normal 0
 for_window [class="vokoscreenNG"] floating enable border normal 0
+for_window [class="Pavucontrol"] floating enable border normal 0
+
+################################################################################################
+
+for_window [window_role="pop-up"] floating enable border normal 0
 
 # switch to workspace with urgent window automatically
-for_window [urgent=latest] focus
+#for_window [urgent=latest] focus
+
+################################################################################################
+################################################################################################
+
 
 # Scrarchpad set
 #for_window [class="mpv"] move scratchpad, scratchpad show
@@ -304,6 +327,10 @@ for_window [class="vokoscreenNG"] move scratchpad, scratchpad show
 for_window [class="Nitrogen"] move scratchpad, scratchpad show
 for_window [class="Gcolor2"] move scratchpad, scratchpad show
 for_window [class="xdman-Main"] move scratchpad, scratchpad show
+
+################################################################################################
+################################################################################################
+
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
@@ -314,6 +341,11 @@ bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
 #bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 
+
+################################################################################################
+################################################################################################
+
+# Set shut down, restart and locking features
 # Set shut down, restart and locking features
 bindsym $mod+x exec $HOME/.config/rofi/applets/android/powermenu.sh
 #bindsym Mod1+0 exec i3exit lock
@@ -334,7 +366,7 @@ bindsym $mod+x exec $HOME/.config/rofi/applets/android/powermenu.sh
 #}
 
 # Resize window (you can also use the mouse for that)
-bindsym $mod+r mode "resize"
+bindsym $mod+r mode "resize" ; exec notify-send 'Resize Window'
 mode "resize" {
         # These bindings trigger as soon as you enter the resize mode
         # Pressing left will shrink the window’s width.
@@ -353,8 +385,8 @@ mode "resize" {
         bindsym Right resize grow width 2 px or 2 ppt
 
         # exit resize mode: Enter or Escape
-        bindsym Return mode "default"
-        bindsym Escape mode "default"
+        bindsym Return mode "default" ; exec notify-send 'Exit Resize'
+        bindsym Escape mode "default" ; exec notify-send 'Exit Resize'
 }
 bindsym --release Caps_Lock exec pkill -SIGRTMIN+10 i3blocks
 #bindsym Caps_Lock exec notify-send 'Caps Lock' 
@@ -390,6 +422,10 @@ exec_always --no-startup-id ff-theme-util
 exec_always --no-startup-id fix_xcursor
 #exec --no-startup-id picom
 
+################################################################################################
+################################################################################################
+
+
 # Color palette used for the terminal ( ~/.Xresources file )
 # Colors are gathered based on the documentation:
 # https://i3wm.org/docs/userguide.html#xresources
@@ -420,34 +456,38 @@ set_from_resource $term_color13    color13
 set_from_resource $term_color14    color14
 set_from_resource $term_color15    color15
 
+################################################################################################
+################################################################################################
+
+
 # Start i3bar to display a workspace bar (plus the system information i3status if available)
 # statusbar, i3bar,
-bar {
-	status_command i3blocks -c ~/.i3/i3blocks.conf
-	position bottom
+#bar {
+#	status_command i3blocks -c ~/.i3/i3blocks.conf
+#	position bottom
 #	font pango:font\-logo 9
-  font pango:Iosevka 9
-	strip_workspace_numbers yes
-	height 21
-	workspace_min_width 12
-	mode dock
-  tray_padding 3
+#  font pango:Iosevka 9
+#	strip_workspace_numbers yes
+#	height 21
+#	workspace_min_width 12
+#	mode dock
+#  tray_padding 3
 #  tray_output none
 #  i3bar_command i3bar --transparency
 # separator_symbol ""
-    colors {
-        background #191919
-        separator  #A6A28C
-        statusline #ffffff
+#    colors {
+#        background #191919
+#        separator  #A6A28C
+#        statusline #ffffff
 
 #     workspace            border	    backgr.	  text
-        focused_workspace  $bgclr 	  $kuning   $bgclr
-        active_workspace   $bgclr  	  $bgclr    $kuning
-        inactive_workspace $bgclr 	  $bgclr    $kuning
-        binding_mode       $bgclr     $kuning   $bgclr
-        urgent_workspace   $merah 	  $merah	  $bgclr
-    }
-}
+#        focused_workspace  $bgclr 	  $kuning   $bgclr
+#        active_workspace   $bgclr  	  $bgclr    $kuning
+#        inactive_workspace $bgclr 	  $bgclr    $kuning
+#        binding_mode       $bgclr     $kuning   $bgclr
+#        urgent_workspace   $merah 	  $merah	  $bgclr
+#    }
+#}
 
 #bar {
 #  id bar-1
@@ -467,16 +507,20 @@ bar {
 #}
 #}
 
+################################################################################################
+################################################################################################
+
+
 # set color
 set $bgclr1 #DABB22
-set $bgclr	#191919
+set $bgclr	#121212
 set $merah	#D73737
 set $cyan   #1FAD83
 set $gray	  #A6A28C
 set $putih	#FEFBEC
 set $kuning #DABB22
 # hide/unhide i3status bar
-bindsym $mod+m bar mode toggle
+#bindsym $mod+m bar mode toggle
 
 # Theme colors
 # class                   border  backgr. text    indic.   child_border
@@ -486,7 +530,11 @@ bindsym $mod+m bar mode toggle
   client.urgent           $merah  $merah  $bgclr  #268BD2
   client.placeholder      #000000 #0c0c0c #ffffff #000000 
 
-  client.background       #282828
+  client.background       $bgclr
+
+################################################################################################
+################################################################################################
+
 
 #############################
 ### settings for i3-gaps: ###
@@ -494,7 +542,7 @@ bindsym $mod+m bar mode toggle
 
 # Set inner/outer gaps
 gaps inner 10
-gaps outer -2
+gaps outer 0
 
 # Additionally, you can issue commands with the following syntax. This is useful to bind keys to changing the gap size.
 # gaps inner|outer current|all set|plus|minus <px>
@@ -503,35 +551,43 @@ gaps outer -2
 
 # Smart gaps (gaps used if only more than one container on the workspace)
 # activate for disable gaps in tabbed mode
-#smart_gaps on
+smart_gaps on
 
 # Smart borders (draw borders around container only if it is not the only container on this workspace) 
 # on|no_gaps (on=always activate and no_gaps=only activate if the gap size to the edge of the screen is 0)
-smart_borders on
+smart_borders no_gaps
+
+# Hide borders
+hide_edge_borders smart
+
+################################################################################################
+################################################################################################
 
 # Press $mod+Shift+g to enter the gap mode. Choose o or i for modifying outer/inner gaps. Press one of + / - (in-/decrement for current workspace) or 0 (re#move gaps for current workspace). If you also press Shift with these keys, the change will be global for all workspaces.
 set $mode_gaps Gaps: (o) outer, (i) inner
 set $mode_gaps_outer Outer Gaps: +|-|0 (local), Shift + +|-|0 (global)
 set $mode_gaps_inner Inner Gaps: +|-|0 (local), Shift + +|-|0 (global)
-bindsym $mod+Shift+g mode "$mode_gaps"
+bindsym $mod+Shift+g mode "$mode_gaps" ; exec notify-send 'Choose o/i'
 
 mode "$mode_gaps" {
-        bindsym o      mode "$mode_gaps_outer"
-        bindsym i      mode "$mode_gaps_inner"
-        bindsym Return mode "default"
-        bindsym Escape mode "default"
+        bindsym o      mode "$mode_gaps_outer" ; exec notify-send 'Resize gaps outer -/+/0'
+        bindsym i      mode "$mode_gaps_inner" ; exec notify-send 'Resize gaps inner -/+/0'
+       
+        bindsym Return mode "default" ; exec notify-send 'Exit gaps mode'
+        bindsym Escape mode "default" ; exec notify-send 'Exit gaps mode'
+
 }
 mode "$mode_gaps_inner" {
         bindsym plus  gaps inner current plus 5
         bindsym minus gaps inner current minus 5
-        bindsym 0     gaps inner current set 0
+        bindsym 0     gaps inner current set 10
 
         bindsym Shift+plus  gaps inner all plus 5
         bindsym Shift+minus gaps inner all minus 5
-        bindsym Shift+0     gaps inner all set 0
+        bindsym Shift+0     gaps inner all set 10
 
-        bindsym Return mode "default"
-        bindsym Escape mode "default"
+        bindsym Return mode "default" ; exec notify-send 'Exit gaps mode'
+        bindsym Escape mode "default" ; exec notify-send 'Exit gaps mode'
 }
 mode "$mode_gaps_outer" {
         bindsym plus  gaps outer current plus 5
@@ -542,12 +598,12 @@ mode "$mode_gaps_outer" {
         bindsym Shift+minus gaps outer all minus 5
         bindsym Shift+0     gaps outer all set 0
 
-        bindsym Return mode "default"
-        bindsym Escape mode "default"
+        bindsym Return mode "default" ; exec notify-send 'Exit gaps mode'
+        bindsym Escape mode "default" ; exec notify-send 'Exit gaps mode'
 }
 
 ##############################################
-############## Run Aplication ################
+############## autorun Aplication ################
 ##############################################
 
 #clipmenu
@@ -556,12 +612,14 @@ bindsym $mod+p exec --no-startup-id clipmenu
 #bindsym $mod+Shift+p exec --no-startup-id rm -rf /tmp/clipmenu/*
 
 #dmenu_mager
-bindsym $mod+z exec dmenu_mager
+bindsym --release Menu exec dmenu_mager
 
 #bindsym $mod+Shift+f exec pcmanfm
 #bindsym $mod+Shift+b exec chromium
 #bindsym $mod+Ctrl+r exec st -f 'Iosevka Nerd Font:size=12' ranger
 #bindsym $mod+Shift+t exec telegram-desktop
+
+exec --no-startup-id $HOME/.config/polybar/launch.sh start
 
 ##############################################
 ############### New Addition #################
@@ -570,8 +628,19 @@ bindsym $mod+z exec dmenu_mager
 floating_minimum_size 150x125
 floating_maximum_size 1200x700
 default_floating_border normal 0
-default_border normal 0
+default_border pixel 2
 
+################################################################################################
+###     Polybar
+################################################################################################
+
+bindsym $mod+b exec --no-startup-id polybar-msg cmd restart
+bindsym $mod+Shift+b exec --no-startup-id $HOME/.config/polybar/launch.sh toggle
+
+################################################################################################
+################################################################################################
 # Open the Blank Space "i3 open" or "i3-msg open"
 bindsym $mod+o open
 bindsym $mod+Shift+o exec st -e 'bash-pipes'
+
+#bindsym --release XF86PowerOff exec $HOME/.config/rofi/applets/android/powermenu.sh
