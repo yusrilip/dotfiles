@@ -1,5 +1,5 @@
 ******************************************************************
-                                                      All stolen from Internet
+All stolen from Internet
 ******************************************************************
 
 Use [this Wallpaper](https://github.com/yusrilip/dotfiles/blob/main/shots/gimp-a-planet2-transparant.png?raw=true) so you can change your background color.
