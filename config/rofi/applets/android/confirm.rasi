@@ -1,0 +1,24 @@
+/* Confirm Dialog */
+
+@import "colors.rasi"
+
+* {
+    background-color:       #121212;
+    text-color:             #DABB22;
+	font:				 	"Iosevka Mayukai Medium 11";
+}
+
+window {
+    width:      			120px;
+    padding:    			10px;
+    border:					2px;
+    border-radius:          0px;
+    border-color:           #dabb22;
+    location:               center;
+    y-offset:               -20px;
+}
+
+entry {
+    expand: 				true;
+    text-color:				#DABB22;
+}

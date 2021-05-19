@@ -1,0 +1,91 @@
+/*
+ *
+ * Author  : Aditya Shakya
+ * Mail    : adi1090x@gmail.com
+ * Github  : @adi1090x
+ * Twitter : @adi1090x
+ *
+ */
+
+configuration {
+    disable-history:                false;
+    fullscreen:                     false;
+	hide-scrollbar: 				true;
+	sidebar-mode: 					false;
+}
+
+@import "colors.rasi"
+
+* {
+    background-color:               #dabb22;
+    text-color:                     #FFFFFF;
+}
+
+window {
+    transparency:                   "fake";
+    border-radius:                  0px;
+    width:                          283px;
+    location:                       center;
+    x-offset:                       0px;
+    y-offset:                       0px;
+}
+
+listview {
+    lines:							5;
+    margin:                         2px;
+    spacing:                        2px;
+    cycle:                          true;
+    dynamic:                        true;
+    layout:                         horizontal;
+}
+
+mainbox {
+    background-color:               #dabb22;
+    children:                       [ listview ];
+}
+
+element {
+    background-color:               #121212;
+    text-color:                     #DABB22;
+    orientation:                    vertical;
+    border-radius:                  0px;
+}
+
+element-text {
+	font:							"Iosevka 15";
+    expand:                         true;
+    horizontal-align:               0.5;
+    vertical-align:                 0;
+    margin:                         18px 17px 18px 17px;
+}
+
+element normal.urgent,
+element alternate.urgent {
+    background-color:               @off;
+    text-color:                     #dabb22;
+    border-radius:                  0px;
+}
+
+element normal.active,
+element alternate.active {
+    background-color:               #121212;
+    text-color:                     #dabb22;
+}
+
+element selected {
+    background-color:               #DABB22;
+    text-color:                     #121212;
+    border:                  		0px;
+    border-radius:                  0px;
+    border-color:                  	#dabb22;
+}
+
+element selected.urgent {
+    background-color:               @on;
+    text-color:                     @background;
+}
+
+element selected.active {
+    background-color:               #121212;
+    color:                          #121212;
+}
